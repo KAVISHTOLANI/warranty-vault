@@ -21,3 +21,11 @@ Data is stored only in this browser profile; it is not synchronized, encrypted, 
 ## Future improvements
 
 Add structured import, more domain-specific reports, and optional encrypted local backups.
+
+## Rules
+
+This application is local-first. It does not provide accounts, cloud synchronization, or professional advice. Use verified context before acting on stored information.
+
+## Tests
+
+Run `npm test` for the included logic checks and `npm run build` for the production bundle.
