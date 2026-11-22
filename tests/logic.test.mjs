@@ -1,0 +1,1 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {parseTags,toMarkdown,csv} from '../src/logic.js';test('parses tags',()=>assert.deepEqual(parseTags('one, two'),['one','two']));test('exports useful records',()=>{const r=[{id:'1',title:'Test',notes:'Useful'}];assert.match(toMarkdown('Test app',r),/Test/);assert.match(csv(r),/notes/)});
