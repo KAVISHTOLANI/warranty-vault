@@ -1511,3 +1511,114 @@ th[aria-sort='descending'] .sort-ind {
   background: none;
   min-width: 180px;
 }
+/* Common app-level helpers (wave 3) */
+.h3 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+.display-num {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight, 560);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.1;
+  margin: 0;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.tabs button[aria-checked='true'] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.nowrap {
+  flex-wrap: nowrap;
+}
+/* Simple vertical bar chart */
+.bars-wrap {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+}
+.bars-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding-bottom: 22px;
+  text-align: right;
+}
+.bars {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  height: 220px;
+  border-bottom: 1px solid var(--rule);
+}
+.bar-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 6px;
+  border-radius: 3px;
+}
+.bar-col:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.bar-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 0;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+  transform-origin: bottom;
+  animation: bar-rise 0.8s var(--ease) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+.bar-stack > span {
+  display: block;
+  min-height: 2px;
+}
+.bar-label {
+  font-size: 0.66rem;
+  color: var(--muted);
+  text-align: center;
+  height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+@keyframes bar-rise {
+  from {
+    transform: scaleY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar-stack {
+    animation: none;
+  }
+}
+/* Main column first, narrow aside second */
+.layout-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 22px;
+  align-items: start;
+}
+.layout-main > * {
+  min-width: 0;
+}
+@media (max-width: 900px) {
+  .layout-main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

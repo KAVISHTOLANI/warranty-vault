@@ -5,3 +5,6 @@ playwright-report
 *.log
 .DS_Store
 .vercel
+# sync-conflict copies (e.g. "App 2.tsx")
+* [0-9].*
+* [0-9]

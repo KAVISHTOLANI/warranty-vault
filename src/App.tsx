@@ -350,7 +350,8 @@ function Items({ store, setStore, today }: Ctx) {
 function Editor({ store, setStore, today, navigate, id }: Ctx & { id?: string }) {
   const existing = id ? store.items.find((i) => i.id === id) : undefined;
   const [draft, setDraft] = useState<ItemDraft>(() => (existing ? draftFrom(existing) : emptyDraft(today)));
-  const [errors, setErrors] = useState<DraftErrors>({});
+  const [submitted, setSubmitted] = useState(false);
+  const errors: DraftErrors = submitted ? validateDraft(draft, today).errors : {}; // live once the user has tried to save
   if (id && !existing) return <EmptyState title="Item not found" actions={<a className="btn btn-primary" href="#/items">Back to items</a>}>It may have been deleted.</EmptyState>;
   const set = <K extends keyof ItemDraft>(k: K, v: ItemDraft[K]) => setDraft({ ...draft, [k]: v });
   const preview = validateDraft(draft, today).value;
@@ -359,7 +360,7 @@ function Editor({ store, setStore, today, navigate, id }: Ctx & { id?: string })
   function submit(e: React.FormEvent) {
     e.preventDefault();
     const r = validateDraft(draft, today);
-    setErrors(r.errors);
+    setSubmitted(true);
     if (!r.value) {
       const first = Object.keys(r.errors)[0];
       document.querySelector<HTMLElement>(`[data-field="${first}"] input, [data-field="${first}"] select`)?.focus();
@@ -378,7 +379,7 @@ function Editor({ store, setStore, today, navigate, id }: Ctx & { id?: string })
   return (
     <div className="stack">
       <PageHead eyebrow={existing ? 'Edit item' : 'Add item'} title={existing ? <>Edit <em>{existing.name}</em></> : <>Record a <em>purchase.</em></>} description="Only the name and purchase date are required. Everything else makes a future claim easier." />
-      <form className="layout-side" onSubmit={submit} noValidate>
+      <form className="layout-main" onSubmit={submit} noValidate>
         <div className="card stack">
           {Object.keys(errors).length > 0 && <Notice kind="error">Please fix {Object.keys(errors).length === 1 ? 'the highlighted field' : `the ${Object.keys(errors).length} highlighted fields`}.</Notice>}
           <div className="form-grid">
