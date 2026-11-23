@@ -2,7 +2,7 @@
 
 Warranty and purchase records that work out each warranty’s last covered day, warn you before it lapses, and keep the claims history and the location of your receipts next to the item.
 
-**Live demo:** [https://warranty-vault.vercel.app/](https://warranty-vault.vercel.app/) — runs entirely in your browser; demo data is fictional and labelled.
+**Live demo:** [https://proofkeep.vercel.app/](https://proofkeep.vercel.app/) — runs entirely in your browser; demo data is fictional and labelled.
 
 ![Landing with the live coverage timeline](docs/landing.png)
 
