@@ -1640,3 +1640,9 @@ fieldset {
 .table-wrap {
   position: relative; /* keeps absolutely positioned sr-only labels inside the scroller */
 }
+.row-between {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
