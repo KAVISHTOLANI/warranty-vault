@@ -1622,3 +1622,21 @@ fieldset {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+.note-box {
+  margin: 0;
+  padding: 10px 14px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+}
+.btn[aria-pressed='true'] {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.form-grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.table-wrap {
+  position: relative; /* keeps absolutely positioned sr-only labels inside the scroller */
+}
