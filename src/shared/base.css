@@ -1256,7 +1256,8 @@ table.table {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-.table th.num {
+.table th.num,
+.table td.num {
   text-align: right;
 }
 
